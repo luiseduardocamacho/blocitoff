@@ -1,4 +1,22 @@
-<ul>
-  <li><%= @user.email%></li>
-  <li></li>
-</ul>
+<!-- Add logic so that only the owner of the to do list can actually see the list -->
+<div class="row">
+  <!-- Add additional user fields -->
+    <%= @user.email%>
+</div>
+<div class="row">
+  <div class="col-md-8">
+    <h3> To do list </h3>
+    <% @user.items.each do |item| %>
+      <%= render partial: "items/item", locals: { foo: item } %>
+    <% end %>
+    <br />
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-8">
+    <ul>
+      <%= render partial: "items/form" %>
+    </ul>
+    <br />
+  </div>
+</div>

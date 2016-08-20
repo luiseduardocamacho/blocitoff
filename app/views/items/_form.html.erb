@@ -1,0 +1,26 @@
+<h4>Add an item</h4>
+
+ <%= form_for [@user, Item.new] do |f| %>
+   <div class="form-group">
+
+     <%= f.label :name, class: 'sr-only' %>
+     <%= f.text_field :name, class: 'form-control', placeholder: "Enter a new item" %>
+   </div>
+   <%= f.submit "Submit Item", class: 'btn btn-default pull-right' %>
+ <% end %>
+
+<!--
+
+link_to item_path(@item)
+=> get /items/123
+link_to user_item_path(@user, @item)
+=> got /users/3245/items/123
+link_to [@user, @item]
+
+url_for( options...)
+
+form_for [@user, Item.new]
+  <form action="/user/123/items">...
+
+
+     -->
