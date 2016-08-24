@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
 
+respond_to :html, :js
 
   def create
     @user = User.find(params[:user_id])
@@ -12,7 +13,21 @@ class ItemsController < ApplicationController
       render @user
     end
   end
-  
+
+  def destroy
+    @user = User.find(params[:user_id])
+    @item = @user.items.find(params[:id])
+    if @item.delete
+      flash[:notice] = "Item was deleted."
+    else
+      flash.now[:alert] = "There was an error deleting the item. Please try again."
+    end
+    respond_to do |format|
+         format.html
+         format.js
+    end
+  end
+
   private
 
   def item_params

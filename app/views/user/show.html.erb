@@ -1,4 +1,4 @@
-<!-- Add logic so that only the owner of the to do list can actually see the list -->
+<!-- Added logic so that only the owner of the to do list can actually see the list -->
 <%if @user == current_user%>
 <div class="row">
   <!-- Add additional user fields -->
@@ -9,7 +9,7 @@
   <div class="col-md-8">
     <h3> To do list </h3>
     <% @user.items.each do |item| %>
-      <%= render partial: "items/item", locals: { foo: item } %>
+      <%= render partial: "items/item", locals: { foo: item, user: @user } %>
     <% end %>
     <br />
   </div>
