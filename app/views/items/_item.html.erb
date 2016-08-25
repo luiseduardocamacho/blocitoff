@@ -2,6 +2,7 @@
   <div class="media-body">
     <p><%=foo.name%>
       <%= link_to "", user_item_path(user,foo), method: :delete, remote: true, class: 'glyphicon glyphicon-ok' %>
+        <small> <%=distance_of_time_in_words(Time.now, foo.created_at + 7.days, include_seconds: true)%> left </small>
     </p>
   </div>
 <%end%>
